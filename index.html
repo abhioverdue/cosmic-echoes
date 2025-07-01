@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Echoes - A Journey Across Time & Space</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <!-- External JavaScript Files -->
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/config.js"></script>
+
+</head>
+<body>
+    <!-- Hero Background -->
+    <div class="hero-background"></div>
+    
+    <!-- Animated Stars -->
+    <div class="stars" id="stars"></div>
+    
+    <div class="scroll-container">
+        <!-- Hero Section -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <h1>Cosmic Echoes</h1>
+                    <p>A Journey Across Time & Space</p>
+                    
+                    <div class="header-stats">
+                        <div class="header-stat">
+                            <div class="header-stat-value" id="nextEventDays">5</div>
+                            <div class="header-stat-label">Days to Next Year</div>
+                        </div>
+                        <div class="header-stat">
+                            <div class="header-stat-value" id="visiblePlanets">5</div>
+                            <div class="header-stat-label">Visible Planets</div>
+                        </div>
+                        <div class="header-stat">
+                            <div class="header-stat-value" id="currentPhase">🌕</div>
+                            <div class="header-stat-label">Moon Phase</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Solar System Section -->
+        <section class="solar-system-section" id="solar-system">
+            <div class="container">
+                <div class="stars" id="solarStars"></div>
+                
+                <h2 class="section-title reveal">Our Solar System</h2>
+                
+                <div class="solar-system">
+                    <div class="planet sun" onclick="showInfo('sun')" title="The Sun"></div>
+                    
+                    <div class="orbit orbit-mercury">
+                        <div class="planet mercury" onclick="showInfo('mercury')" title="Mercury"></div>
+                    </div>
+                    
+                    <div class="orbit orbit-venus">
+                        <div class="planet venus" onclick="showInfo('venus')" title="Venus"></div>
+                    </div>
+                    
+                    <div class="orbit orbit-earth">
+                        <div class="planet earth" onclick="showInfo('earth')" title="Earth">
+                            <div class="moon-orbit">
+                                <div class="planet moon" onclick="event.stopPropagation(); showInfo('moon')" title="Moon"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="orbit orbit-mars">
+                        <div class="planet mars" onclick="showInfo('mars')" title="Mars"></div>
+                    </div>
+                    
+                    <div class="orbit orbit-jupiter">
+                        <div class="planet jupiter" onclick="showInfo('jupiter')" title="Jupiter"></div>
+                    </div>
+                    
+                    <div class="orbit orbit-saturn">
+                        <div class="planet saturn" onclick="showInfo('saturn')" title="Saturn"></div>
+                    </div>
+                    
+                    <div class="orbit orbit-uranus">
+                        <div class="planet uranus" onclick="showInfo('uranus')" title="Uranus"></div>
+                    </div>
+                    
+                    <div class="orbit orbit-neptune">
+                        <div class="planet neptune" onclick="showInfo('neptune')" title="Neptune"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Panel -->
+        <div id="infoPanel" class="info-panel">
+            <div class="close-btn" onclick="closeInfo()">×</div>
+            <div id="infoContent"></div>
+        </div>
+
+        <!-- Historical Events Section -->
+        <section class="section">
+            <div class="section-background parallax-bg" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80');"></div>
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title reveal">Historical Events</h2>
+                    <p class="section-subtitle reveal">Discover the astronomical events that shaped our understanding of the cosmos</p>
+                    
+                    <div class="cards-grid">
+                        <div class="card reveal">
+                            <h3 class="card-title">
+                                <span class="card-icon">📅</span>
+                                Historical Space Events
+                            </h3>
+                            <div class="input-group">
+                                <input type="date" id="eventDate" />
+                                <button class="search-button" id="searchButton">
+                                     <span id="searchIcon">🔍</span> Search Events
+                                    </button>
+                                </div>
+                            <div class="event-list" id="eventList">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cosmic Timeline Section -->
+        <section class="section">
+            <div class="section-background parallax-bg" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80');"></div>
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title reveal">The Birth of Everything</h2>
+                    <p class="section-subtitle reveal">Journey through 13.8 billion years of cosmic evolution</p>
+                    
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        
+                        <div class="timeline-item reveal" data-age="13.8 billion years ago">
+                            <div class="timeline-marker big-bang"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-age">13.8 billion years ago</div>
+                                <h3 class="timeline-title">The Big Bang</h3>
+                                <p class="timeline-description">The universe begins as a singularity and rapidly expands in a fraction of a second, creating space, time, and all fundamental forces.</p>
+                                <div class="timeline-visual">
+                                    <div class="explosion-animation"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item reveal" data-age="380,000 years later">
+                            <div class="timeline-marker cosmic-microwave"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-age">380,000 years after Big Bang</div>
+                                <h3 class="timeline-title">First Light</h3>
+                                <p class="timeline-description">The universe cools enough for electrons and protons to combine, making it transparent to light. The cosmic microwave background radiation is released.</p>
+                                <div class="timeline-visual">
+                                    <div class="light-waves"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item reveal" data-age="400 million years later">
+                            <div class="timeline-marker first-stars"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-age">400 million years after Big Bang</div>
+                                <h3 class="timeline-title">First Stars Ignite</h3>
+                                <p class="timeline-description">Gravity pulls together the first clumps of matter, igniting the first generation of massive stars that forge heavy elements in their cores.</p>
+                                <div class="timeline-visual">
+                                    <div class="star-formation">
+                                        <div class="proto-star"></div>
+                                        <div class="proto-star"></div>
+                                        <div class="proto-star"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item reveal" data-age="1 billion years later">
+                            <div class="timeline-marker first-galaxies"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-age">1 billion years after Big Bang</div>
+                                <h3 class="timeline-title">Galaxy Formation</h3>
+                                <p class="timeline-description">The first galaxies form as stars cluster together under gravity, creating the cosmic web structure we see today.</p>
+                                <div class="timeline-visual">
+                                    <div class="galaxy-spiral">
+                                        <div class="spiral-arm"></div>
+                                        <div class="spiral-arm"></div>
+                                        <div class="spiral-arm"></div>
+                                        <div class="galactic-center"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item reveal" data-age="9.2 billion years later">
+                            <div class="timeline-marker solar-systems"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-age">4.6 billion years ago</div>
+                                <h3 class="timeline-title">Solar System Birth</h3>
+                                <p class="timeline-description">Our solar system forms from a collapsing cloud of gas and dust. The Sun ignites, and planets begin to accrete from the surrounding disk.</p>
+                                <div class="timeline-visual">
+                                    <div class="solar-formation">
+                                        <div class="proto-sun"></div>
+                                        <div class="accretion-disk"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item reveal" data-age="4.1 billion years ago">
+                            <div class="timeline-marker first-life"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-age">3.8 billion years ago</div>
+                                <h3 class="timeline-title">Life Emerges</h3>
+                                <p class="timeline-description">The first simple life forms appear on Earth in the primordial oceans, beginning the long journey of biological evolution.</p>
+                                <div class="timeline-visual">
+                                    <div class="primordial-soup">
+                                        <div class="organic-molecule"></div>
+                                        <div class="organic-molecule"></div>
+                                        <div class="organic-molecule"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item reveal" data-age="present">
+                            <div class="timeline-marker present-day"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-age">Today</div>
+                                <h3 class="timeline-title">The Present</h3>
+                                <p class="timeline-description">After 13.8 billion years of cosmic evolution, we exist to contemplate our place in this vast, expanding universe.</p>
+                                <div class="timeline-visual">
+                                    <div class="earth-today">
+                                        <div class="rotating-earth"></div>
+                                        <div class="orbital-path"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Moon Section -->
+        <section class="section">
+            <div class="section-background parallax-bg" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1502134249126-9f3755a50d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');"></div>
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title reveal">Lunar Phases</h2>
+                    <p class="section-subtitle reveal">Track the moon's journey through its eternal cycle</p>
+                    
+                    <div class="cards-grid">
+                        <div class="card reveal">
+                            <h3 class="card-title">
+                                <span class="card-icon">🌙</span>
+                                Current Moon Phase
+                            </h3>
+                            <div class="moon-phase">
+                                <div class="moon-visual" id="moonVisual">
+                                    <div class="moon-shadow" id="moonShadow"></div>
+                                    
+                                </div>
+                                <div class="location-info">
+                                    <strong>Your Location:</strong>
+                                    <div id="userLocation">Detecting location...</div>
+                                    <div id="locationDetails">Locating region...</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card reveal">
+                            <h3 class="card-title">
+                                <span class="card-icon">🛰️</span>
+                                Live Astronomical Data
+                            </h3>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-value" id="sunriseTime">6:42</div>
+                                    <div class="stat-label">Sunrise</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" id="sunsetTime">17:28</div>
+                                    <div class="stat-label">Sunset</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" id="moonrise">19:15</div>
+                                    <div class="stat-label">Moonrise</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" id="moonset">08:30</div>
+                                    <div class="stat-label">Moonset</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cosmic Gallery Section -->
+        <section class="gallery-section">
+            <div class="gallery-container">
+                <h2 class="section-title reveal">Cosmic Gallery</h2>
+                
+                <div class="masonry-grid" id="masonryGrid">
+                    <div class="gallery-item">
+                        <img src="https://cdn.mos.cms.futurecdn.net/iB3z4tNs8nig8Qn9WsfHCX-1200-80.jpg" alt="Deep Space" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Deep Space Nebula</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://images.stockcake.com/public/d/7/d/d7d1557f-0767-4714-a8ba-59d06884f2b6_large/moon-landscape-view-stockcake.jpg" alt="Moon Surface" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Lunar Landscape</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://www.innovationnewsnetwork.com/wp-content/uploads/2020/12/the-stars-in-the-Milky-Way.jpg" alt="Star Field" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Milky Way Stars</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://cdn.britannica.com/41/196341-050-6B55B7E7/solar-eclipse-moon-sun-space-astronomy.jpg" alt="Solar Eclipse" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Solar Eclipse</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt0HJqQshXXev8C8nO76Y3HJXnSQ3fg9r_Eg&s" alt="Galaxy" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Spiral Galaxy</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/icelandtours/g_auto,f_auto,c_auto,w_3840,q_auto:good/northern_lights_above_glacier_lagoon_v2osk_unsplash_7d39ca647f.jpg" alt="Aurora" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Aurora Borealis</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://www.universetoday.com/article_images/dn9824-1_831.jpg" alt="Planets" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Planetary Alignment</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://cdn.mos.cms.futurecdn.net/sVGti5fv5yp2ZKfwnSctXG.jpg" alt="Space Station" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">International Space Station</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://orbitaltoday.com/wp-content/uploads/2020/12/rocket-launch-3-scaled.jpg" alt="Rocket Launch" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Rocket Launch</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://dq0hsqwjhea1.cloudfront.net/comet_hb.gif" alt="Comet" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Comet Trail</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://c02.purpledshub.com/uploads/sites/48/2024/06/shooting-star-over-earth.jpg?webp=1&w=1200" alt="Meteor Shower" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Meteor Shower</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://media.istockphoto.com/id/143175766/photo/satellite-and-sunrise-in-space.jpg?s=612x612&w=0&k=20&c=xuPKsDDnBuSOG1I-UAaMPfrp1ORCXDN8Ic6ZCN7u9Ag=" alt="Satellite" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="overlay-text">Satellite View</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Constellations Section -->
+        <section class="section">
+            <div class="section-background parallax-bg" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2013&q=80');"></div>
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title reveal">Stellar Navigation</h2>
+                    <p class="section-subtitle reveal">Explore the constellations that have guided humanity for millennia</p>
+                    
+                    <div class="cards-grid">
+                        <div class="card reveal">
+                            <h3 class="card-title">
+                                <span class="card-icon">⭐</span>
+                                Tonight's Constellations
+                            </h3>
+                            <div class="constellation-canvas" id="constellationView">
+                            </div>
+                            <div id="constellationInfo">
+                                <strong>Visible from your Location - Tap to Change</strong> 
+                            </div>
+                        </div>
+                        
+                        <div class="card reveal">
+                            <h3 class="card-title">
+                                <span class="card-icon">🌌</span>
+                                Planetary Positions
+                            </h3>
+                            <div class="location-info">
+                                <strong>Current Sky:</strong>
+                                <div id="planetaryData">
+                                    Mars: 23° above horizon<br>
+                                    Jupiter: Visible after midnight<br>
+                                    Saturn: Setting at 21:00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Eclipse Section -->
+        <section class="section">
+        <div class="section-background"></div>
+        <div class="section-overlay"></div>
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">Celestial Events</h2>
+                <p class="section-subtitle">Witness the cosmic dance of celestial bodies</p>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span class="card-icon">🌘</span>
+                            Eclipse & Transit Tracker
+                        </h3>
+                        <div class="eclipse-visual">
+                            <div class="celestial-body sun1"></div>
+                            <div class="celestial-body earth1"></div>
+                            <div class="celestial-body moon-eclipse"></div>
+                        </div>
+                        <div id="eclipseInfo">
+                            <div class="loading"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span class="card-icon">🚀</span>
+                            Upcoming Events
+                        </h3>
+                        <div id="apodContainer">
+                            <div class="loading"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Space Explorer Section -->
+    <section class="space-explorer-section">
+        <div class="section-overlay"></div>
+        <div class="container">
+            <h2 class="section-title">Become a Space Explorer</h2>
+            <p class="section-subtitle">Embark on the ultimate cosmic adventure and discover your path to the stars</p>
+
+            <!-- Explorer Dashboard -->
+            <div class="explorer-dashboard">
+                <h3 class="explorer-title">Your Space Journey</h3>
+                <p class="explorer-level">Current Level: <span id="currentLevel">Cosmic Cadet</span></p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <p id="progressText">Complete training modules to advance to Stellar Navigator!</p>
+            </div>
+
+            <!-- Career Paths -->
+            <div class="career-paths">
+                <div class="career-card" onclick="selectCareer('astronaut')">
+                    <span class="career-icon">🚀</span>
+                    <h3 class="career-title">Astronaut</h3>
+                    <p class="career-description">Command spacecraft, conduct spacewalks, and live among the stars aboard the International Space Station.</p>
+                    <div class="career-requirements">
+                        <div class="requirements-title">Key Requirements</div>
+                        <div class="requirements-list">• Advanced STEM degree<br>• Pilot experience or advanced technical skills<br>• Physical fitness & psychological resilience<br>• Team leadership abilities</div>
+                    </div>
+                </div>
+
+                <div class="career-card" onclick="selectCareer('engineer')">
+                    <span class="career-icon">🛠️</span>
+                    <h3 class="career-title">Aerospace Engineer</h3>
+                    <p class="career-description">Design and build the next generation of rockets, satellites, and space habitats that will carry humanity to new worlds.</p>
+                    <div class="career-requirements">
+                        <div class="requirements-title">Key Requirements</div>
+                        <div class="requirements-list">• Engineering degree (Aerospace/Mechanical)<br>• CAD software proficiency<br>• Systems thinking & problem solving<br>• Innovation & creativity</div>
+                    </div>
+                </div>
+
+                <div class="career-card" onclick="selectCareer('scientist')">
+                    <span class="career-icon">🔬</span>
+                    <h3 class="career-title">Space Scientist</h3>
+                    <p class="career-description">Unravel the mysteries of the universe through research in astrophysics, planetary science, and astrobiology.</p>
+                    <div class="career-requirements">
+                        <div class="requirements-title">Key Requirements</div>
+                        <div class="requirements-list">• PhD in relevant science field<br>• Research & analytical skills<br>• Data analysis & programming<br>• Scientific communication</div>
+                    </div>
+                </div>
+
+                <div class="career-card" onclick="selectCareer('mission')">
+                    <span class="career-icon">🎯</span>
+                    <h3 class="career-title">Mission Specialist</h3>
+                    <p class="career-description">Plan and execute complex space missions, ensuring every detail is perfect for humanity's greatest adventures.</p>
+                    <div class="career-requirements">
+                        <div class="requirements-title">Key Requirements</div>
+                        <div class="requirements-list">• Operations management experience<br>• Risk assessment expertise<br>• Communication & coordination<br>• Crisis management skills</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Simulator -->
+            <div class="mission-simulator">
+                <h3 class="simulator-title"> Mission Control Simulator</h3>
+                <p>Test your space exploration skills with our interactive mission scenarios!</p>
+                
+                <div class="mission-controls">
+                    <button class="control-button" onclick="startMission('mars')">Mars Landing Mission</button>
+                    <button class="control-button" onclick="startMission('iss')">ISS Docking Procedure</button>
+                    <button class="control-button" onclick="startMission('moon')">Lunar Base Setup</button>
+                </div>
+
+                <div class="mission-status" id="missionStatus">
+                    > MISSION CONTROL READY<br>
+                    > Select a mission to begin your space exploration training<br>
+                    > All systems nominal. Awaiting commander input...
+                </div>
+            </div>
+
+            <!-- Training Modules -->
+            <div class="training-modules">
+                <div class="training-module" onclick="completeModule('physics')">
+                    <span class="module-icon">⚛️</span>
+                    <h4 class="module-title">Space Physics</h4>
+                    <div class="module-progress">
+                        <div class="module-progress-fill" style="width: 0%" id="physics-progress"></div>
+                    </div>
+                    <p class="module-status" id="physics-status">Click to start training</p>
+                </div>
+
+                <div class="training-module" onclick="completeModule('navigation')">
+                    <span class="module-icon">🧭</span>
+                    <h4 class="module-title">Celestial Navigation</h4>
+                    <div class="module-progress">
+                        <div class="module-progress-fill" style="width: 0%" id="navigation-progress"></div>
+                    </div>
+                    <p class="module-status" id="navigation-status">Click to start training</p>
+                </div>
+
+                <div class="training-module" onclick="completeModule('survival')">
+                    <span class="module-icon">🛡️</span>
+                    <h4 class="module-title">Space Survival</h4>
+                    <div class="module-progress">
+                        <div class="module-progress-fill" style="width: 0%" id="survival-progress"></div>
+                    </div>
+                    <p class="module-status" id="survival-status">Click to start training</p>
+                </div>
+
+                <div class="training-module" onclick="completeModule('communication')">
+                    <span class="module-icon">📡</span>
+                    <h4 class="module-title">Space Communication</h4>
+                    <div class="module-progress">
+                        <div class="module-progress-fill" style="width: 0%" id="communication-progress"></div>
+                    </div>
+                    <p class="module-status" id="communication-status">Click to start training</p>
+                </div>
+            </div>
+
+            <!-- Achievement System -->
+            <div class="achievements">
+                <h3 class="achievements-title">Space Explorer Achievements</h3>
+                <div class="achievement-grid">
+                    <div class="achievement-badge unlocked" id="first-steps">
+                        <span class="badge-icon">🌟</span>
+                        <div class="badge-title">First Steps</div>
+                        <div class="badge-description">Begin your space journey</div>
+                    </div>
+                    <div class="achievement-badge" id="cadet-graduate">
+                        <span class="badge-icon">🎓</span>
+                        <div class="badge-title">Cadet Graduate</div>
+                        <div class="badge-description">Complete basic training</div>
+                    </div>
+                    <div class="achievement-badge" id="mission-commander">
+                        <span class="badge-icon">👨‍🚀</span>
+                        <div class="badge-title">Mission Commander</div>
+                        <div class="badge-description">Lead a successful mission</div>
+                    </div>
+                    <div class="achievement-badge" id="stellar-navigator">
+                        <span class="badge-icon">🌌</span>
+                        <div class="badge-title">Stellar Navigator</div>
+                        <div class="badge-description">Master celestial navigation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
