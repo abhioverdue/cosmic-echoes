@@ -5,7 +5,7 @@ An immersive, interactive web experience that takes users on a journey through t
 
 https://cosmic-echoes-nine.vercel.app/
 
-## 🚀 Features
+## Features
 
 ### Interactive Solar System
 - **3D Solar System Visualization**: Explore planets with orbital animations
@@ -37,7 +37,7 @@ https://cosmic-echoes-nine.vercel.app/
 - **Responsive Design**: Optimized for all devices and screen sizes
 - **Interactive Animations**: Engaging visual effects throughout the experience
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **3D Graphics**: Three.js (r128)
@@ -47,7 +47,7 @@ https://cosmic-echoes-nine.vercel.app/
 - **Responsive Framework**: Custom CSS Grid and Flexbox
 - **Animation Libraries**: CSS animations and JavaScript transitions
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 cosmic-echoes/
@@ -61,7 +61,7 @@ cosmic-echoes/
 └── package.json               # Local image assets (if any)
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Modern web browser with JavaScript enabled
@@ -97,7 +97,7 @@ Edit `assets/js/config.js` to customize:
 - Animation preferences
 - Feature toggles
 
-## 🌟 Key Sections
+## Key Sections
 
 ### 1. Hero Section
 - Dynamic countdown to next year
@@ -134,7 +134,7 @@ Edit `assets/js/config.js` to customize:
 - Progressive skill-building modules
 - Achievement and badge systems
 
-## 🔧 Customization
+## Customization
 
 ### Adding New Planets
 Update the solar system section in `index.html` and corresponding data in `main.js`:
@@ -168,21 +168,21 @@ function startMission(missionType) {
 }
 ```
 
-## 📱 Responsive Design
+## Responsive Design
 
 The application is fully responsive and optimized for:
 - **Desktop**: Full interactive experience with all features
 - **Tablet**: Touch-optimized interface with adapted layouts
 - **Mobile**: Streamlined experience with essential features
 
-## 🌐 Browser Compatibility
+## Browser Compatibility
 
 - **Chrome** 90+ (Recommended)
 - **Firefox** 88+
 - **Safari** 14+
 - **Edge** 90+
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - [ ] Real-time ISS tracking
 - [ ] Augmented reality constellation viewer
@@ -193,7 +193,7 @@ The application is fully responsive and optimized for:
 - [ ] Offline mode support
 - [ ] VR compatibility
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -201,11 +201,11 @@ The application is fully responsive and optimized for:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **NASA** - Astronomical data and imagery
 - **ESA** - European Space Agency resources
