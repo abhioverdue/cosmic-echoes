@@ -5,6 +5,8 @@
 
 Cosmic Echoes is an immersive, interactive web experience that takes users on a comprehensive journey through space and time. From the Big Bang to modern space exploration, this website combines stunning visuals, educational content, and interactive elements to inspire wonder about our universe.
 
+https://cosmic-echoes-nine.vercel.app/
+
 ## Features
 
 ### Core Sections
