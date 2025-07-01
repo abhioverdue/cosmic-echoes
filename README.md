@@ -1,5 +1,6 @@
 # Cosmic Echoes 🌌
 *A Journey Across Time & Space*
+
 An immersive, interactive web experience that takes users on a journey through the cosmos, from the Big Bang to the present day. Explore our solar system, track celestial events, and become a space explorer through engaging simulations and educational content.
 
 https://cosmic-echoes-nine.vercel.app/
